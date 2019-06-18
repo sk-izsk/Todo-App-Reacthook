@@ -1,46 +1,7 @@
 import React from "react";
-import { Component } from "react";
 import { useState } from "react";
-
-function Todo({ todo, index, completeTodo, removeTodo }) {
-  return (
-    <div
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
-      className="todo"
-    >
-      {todo.text}
-      <div>
-        <button onClick={() => completeTodo(index)}>
-          {" "}
-          {todo.isCompleted ? "Not Complete ?" : "Complete"}{" "}
-        </button>
-        <button onClick={() => removeTodo(index)}> X </button>
-      </div>
-    </div>
-  );
-}
-
-function TodoForm({ addTodo }) {
-  const [value, setValue] = useState("");
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!value) return;
-    addTodo(value);
-    setValue("");
-  };
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="input"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-        placeholder="Add your todo"
-      />
-    </form>
-  );
-}
+import Todo from "./Component/Todo.jsx";
+import TodoForm from "./Component/Todoform.jsx";
 
 function App() {
   const [todos, setTodos] = useState([
